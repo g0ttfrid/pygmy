@@ -8,7 +8,7 @@ Usage:
 
 ▶ cd pygmy
 
-▶ python3 pygmy.py -f urls_list.txt
+▶ python3 pygmy.py -f <urls_list.txt>
 ```
 
 
