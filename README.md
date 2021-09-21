@@ -8,7 +8,9 @@ Usage:
 
 ▶ cd pygmy
 
-▶ python3 pygmy.py -f <urls_list.txt>
+▶ pip3 install -r requirements.txt
+
+▶ python3 pygmy.py -f <url_list.txt>
 ```
 
 
