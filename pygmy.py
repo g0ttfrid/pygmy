@@ -19,7 +19,7 @@ regex = {
 "github": r"(?i)github(.{0,20})?['\"][0-9a-zA-Z]{35,40}"}
 
 def parse_args():
-    parser = argparse.ArgumentParser(usage='pygmy.py -f urls_list.txt')
+    parser = argparse.ArgumentParser(usage='pygmy.py -f url_list.txt')
     parser.add_argument('-f', '--file', type=open, required=True)
     return parser.parse_args()
 
