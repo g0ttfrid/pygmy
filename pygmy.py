@@ -20,18 +20,19 @@ def parse_args():
     return parser.parse_args()
 
 def search(urls):
-    for url in urls:
-        try:
-            r = requests.get(url.rstrip(), timeout=(3), verify=False)
-            for k,v in regex.items():
-                x = re.search(v, str(r.content))
-                if x:
-                    print(f"[+] Possible {k}: {x.group(0)} >> {url.rstrip()}")
-        except:
-            print(f"[-] Error in {url.rstrip()}")
+    try:
+        for url in urls:
+            try:
+                r = requests.get(url.rstrip(), timeout=(3), verify=False)
+                for k,v in regex.items():
+                    x = re.search(v, str(r.content))
+                    if x:
+                        print(f"[+] Possible {k}: {x.group(0)} >> {url.rstrip()}")
+            except Exception:
+                print(f"[-] Error in {url.rstrip()}")
+    except KeyboardInterrupt:
+        print('Stopping')
 
-try:
+if __name__ == "__main__":
     args = parse_args()
     search(args.file)
-except KeyboardInterrupt:
-    print('Stopping')
