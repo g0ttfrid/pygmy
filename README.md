@@ -4,7 +4,7 @@ Take a list of urls and fatch for some types of api keys in the source code of e
 Usage:
 
 ```
-▶ git clone https://github.com/g0ttfr1d/pygmy
+▶ git clone https://github.com/g0ttfrid/pygmy.git
 
 ▶ cd pygmy
 
