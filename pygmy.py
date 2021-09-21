@@ -3,6 +3,7 @@ import argparse
 import requests
 import re
 import urllib3
+from tqdm import tqdm
 urllib3.disable_warnings()
 
 regex = {
@@ -18,23 +19,28 @@ regex = {
 "github": r"(?i)github(.{0,20})?['\"][0-9a-zA-Z]{35,40}"}
 
 def parse_args():
-    parser = argparse.ArgumentParser(usage='pygmy.py -f urls.txt')
+    parser = argparse.ArgumentParser(usage='pygmy.py -f urls_list.txt')
     parser.add_argument('-f', '--file', type=open, required=True)
     return parser.parse_args()
 
-def search(urls):
-    for url in urls:
+def search(list):
+    data = []
+    urls = list.readlines()
+    print(f'[!] File with {len(urls)} lines')
+    for url in tqdm(urls):
         try:
             r = requests.get(url.rstrip(), timeout=(3), verify=False)
-            for k,v in regex.items():
-                x = re.search(v, str(r.content))
-                if x:
-                    print(f"[+] Possible {k}: {x.group(0)} >> {url.rstrip()}")
         except Exception:
-            print(f"[-] Error in {url.rstrip()}")
+            data.append(f'[-] Error in {url.rstrip()}')
+        
+        for k,v in regex.items():
+            x = re.search(v, str(r.content))
+            if x:
+                data.append(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
+    return data
 
 try:
     args = parse_args()
-    search(args.file)
+    print(*search(args.file), sep='\n')
 except KeyboardInterrupt:
-    print('Stopping')
+    print('[!] Stopping')
