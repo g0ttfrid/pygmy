@@ -1,5 +1,5 @@
 # pygmy
-Fetch some types of API keys in source code using regex.
+Take a list of urls and fatch for some types of api keys in the source code of each one using regex.
 
 Usage:
 
