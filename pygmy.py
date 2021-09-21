@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-import argparse, requests, re, urllib3
+import argparse
+import requests
+import re
+import urllib3
 urllib3.disable_warnings()
 
 regex = {
