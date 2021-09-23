@@ -1,5 +1,5 @@
 # pygmy
-Take a list of urls and fatch for some types of api keys in the source code of each one using regex.
+Take a list of urls and fatch for some types of API keys in the source code of each one using regex.
 
 Usage:
 
