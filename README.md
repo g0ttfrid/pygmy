@@ -4,13 +4,11 @@ Take a list of urls and fatch for some types of api keys in the source code of e
 Usage:
 
 ```
-git clone https://github.com/g0ttfrid/pygmy && cd pygmy
-```
-```
-pip3 install -r requirements.txt
-```
-```
-python3 pygmy.py -f <url_list.txt>
+▶ git clone https://github.com/g0ttfrid/pygmy && cd pygmy
+
+▶ pip3 install -r requirements.txt
+
+▶ python3 pygmy.py -f <url_list.txt>
 ```
 
 ### Inspired by
