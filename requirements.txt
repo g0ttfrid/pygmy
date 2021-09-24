@@ -1,5 +1,4 @@
 argparse
 requests
-re
 urllib3
 tqdm
