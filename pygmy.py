@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 import argparse
-import requests
 import re
 import urllib3
+from requests import get
 from tqdm import tqdm
+
 urllib3.disable_warnings()
 
 regex = {
@@ -29,14 +30,13 @@ def search(list):
     print(f'[!] File with {len(urls)} lines')
     for url in tqdm(urls):
         try:
-            r = requests.get(url.rstrip(), timeout=(3), verify=False)
+            r = get(url.rstrip(), timeout=(3), verify=False)
+            for k,v in regex.items():
+                x = re.search(v, str(r.content))
+                if x:
+                    data.append(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
         except Exception:
             data.append(f'[-] Error in {url.rstrip()}')
-        
-        for k,v in regex.items():
-            x = re.search(v, str(r.content))
-            if x:
-                data.append(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
     return data
 
 try:
