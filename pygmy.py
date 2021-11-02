@@ -25,7 +25,7 @@ def parse_args():
     return parser.parse_args()
 
 def search(list):
-    data = []
+    data = set()
     urls = list.readlines()
     print(f'[!] File with {len(urls)} lines')
     for url in tqdm(urls):
@@ -34,13 +34,19 @@ def search(list):
             for k,v in regex.items():
                 x = re.search(v, str(r.content))
                 if x:
-                    data.append(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
+                    data.add(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
         except Exception:
-            data.append(f'[-] Error in {url.rstrip()}')
+            data.add(f'[-] Error in {url.rstrip()}')
     return data
 
-try:
-    args = parse_args()
-    print(*search(args.file), sep='\n')
-except KeyboardInterrupt:
-    print('[!] Stopping')
+def logger(list):
+    with open('output.txt', 'a+', encoding='utf-8') as f:
+        for line in list:
+            f.write(f'{line}\n')
+
+if __name__ == '__main__':
+    try:
+        args = parse_args()
+        logger(search(args.file))
+    except KeyboardInterrupt:
+        print('[!] Stopping')
