@@ -32,7 +32,7 @@ def search(list):
         try:
             r = get(url.rstrip(), timeout=(3), verify=False)
             for k,v in regex.items():
-                x = re.search(v, str(r.content))
+                x = re.search(v, r.text)
                 if x:
                     data.add(f'[+] {k}: {x.group(0)} >> {url.rstrip()}')
         except Exception:
