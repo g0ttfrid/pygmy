@@ -15,7 +15,6 @@ regex = {
 "google_api_key": r"AIza[0-9A-Za-z\\-_]{35}",
 "google_oauth_2.0": r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
 "google_cloud_plataform": r"(?i)(google|gcp|youtube|drive|yt)(.{0,20})?['\"][AIza[0-9a-z\\-_]{35}]['\"]",
-"google_cloud_apikey": r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
 "slack_token": r"xox[baprs]-([0-9a-zA-Z]{10,48})?",
 "basic_auth": r"(?<=:\/\/)[a-zA-Z0-9]+:[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
 "github": r"(?i)github(.{0,20})?['\"][0-9a-zA-Z]{35,40}"}
