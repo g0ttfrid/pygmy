@@ -39,7 +39,7 @@ def search(list):
                 try:
                     x = re.findall(v, r.text)
                     if x:
-                        #print(f'[+] {k}: {x} >> {url.rstrip()}')
+                        print(f'[+] {k}: {x} >> {url.rstrip()}')
                         data.add(f'[+] {k}: {x} >> {url.rstrip()}') 
                 except:
                     #print(f'[!] error regex pattern {k} ({e})')
